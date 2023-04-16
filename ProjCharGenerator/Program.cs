@@ -1,44 +1,70 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace generator
 {
-    class CharGenerator 
-    {
-        private string syms = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя"; 
-        private char[] data;
-        private int size;
-        private Random random = new Random();
-        public CharGenerator() 
-        {
-           size = syms.Length;
-           data = syms.ToCharArray(); 
-        }
-        public char getSym() 
-        {
-           return data[random.Next(0, size)]; 
-        }
-    }
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
-            CharGenerator gen = new CharGenerator();
-            SortedDictionary<char, int> stat = new SortedDictionary<char, int>();
-            for(int i = 0; i < 1000; i++) 
+            BiGenerator();
+            WordGenerator();
+            BiWordGenerator();
+        }
+        public static void BiGenerator()
+        {
+            BiCharGenerator gen = new BiCharGenerator();
+            StreamWriter writer = new StreamWriter("BiGram.txt");
+            SortedDictionary<Tuple<char, char>, int> stat = new SortedDictionary<Tuple<char, char>, int>();
+            for (int i = 0; i < 1000; i++)
             {
-               char ch = gen.getSym(); 
-               if (stat.ContainsKey(ch))
-                  stat[ch]++;
-               else
-                  stat.Add(ch, 1); Console.Write(ch);
+                Tuple<char, char> ch = gen.getSym();
+                if (stat.ContainsKey(ch))
+                    stat[ch]++;
+                else
+                    stat.Add(ch, 1);
+                writer.Write(ch);
+                writer.Write(" ");
             }
-            Console.Write('\n');
-            foreach (KeyValuePair<char, int> entry in stat) 
+            writer.Write('\n');
+            writer.Close();
+        }
+        public static void WordGenerator()
+        {
+            WordGenerator gen = new WordGenerator();
+            StreamWriter writer = new StreamWriter("Words.txt");
+            SortedDictionary<string, int> stat = new SortedDictionary<string, int>();
+            for (int i = 0; i < 1000; i++)
             {
-                 Console.WriteLine("{0} - {1}",entry.Key,entry.Value/1000.0); 
+                string ch = gen.getSym();
+                if (stat.ContainsKey(ch))
+                    stat[ch]++;
+                else
+                    stat.Add(ch, 1);
+                writer.Write(ch);
+                writer.Write(" ");
             }
-            
+            writer.Write('\n');
+            writer.Close();
+        }
+        public static void BiWordGenerator()
+        {
+            BiWordGenerator gen = new BiWordGenerator();
+            StreamWriter writer = new StreamWriter("BiWords.txt");
+            SortedDictionary<string, int> stat = new SortedDictionary<string, int>();
+            for (int i = 0; i < 1000; i++)
+            {
+                string ch = gen.getSym();
+                if (stat.ContainsKey(ch))
+                    stat[ch]++;
+                else
+                    stat.Add(ch, 1);
+                writer.Write(ch);
+                writer.Write(" ");
+            }
+            writer.Write('\n');
+            writer.Close();
         }
     }
 }
