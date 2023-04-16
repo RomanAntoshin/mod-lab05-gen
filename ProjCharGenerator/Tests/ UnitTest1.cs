@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using лаб_5;
+using Г«Г ГЎ_5;
 using lab_5;
 namespace UnitTestProject1
 {
@@ -10,14 +10,14 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            Tuple<char, char> tuple = new Tuple<char, char>('ь', 'ь');
+            Tuple<char, char> tuple = new Tuple<char, char>('Гј', 'Гј');
             BiCharGenerator gen = new BiCharGenerator();
             for(int i=0; i<1000; i++)
                 Assert.IsTrue(gen.getSym() != tuple);
         }
         public void TestMethod2()
         {
-            Tuple<char, char> tuple = new Tuple<char, char>('б', 'б');
+            Tuple<char, char> tuple = new Tuple<char, char>('ГЎ', 'ГЎ');
             BiCharGenerator gen = new BiCharGenerator();
             for (int i = 0; i < 1000; i++)
                 Assert.IsTrue(gen.getSym() != tuple);
