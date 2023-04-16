@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using ëàá_5;
-using lab_5;
+using generator;
 namespace UnitTestProject1
 {
     [TestClass]
