@@ -14,7 +14,7 @@ namespace generator
         int summa = 0;
         private void Load()
         {
-            StreamReader sr = new StreamReader("G:\\ННГУ, ИИТММ, ПИ 3 курс 2 семестр, 2022-2023 гг\\МИПС\\лаб 5\\таблица слов.txt");
+            StreamReader sr = new StreamReader("таблица слов.txt");
             string[] buf = new string[4];
             for (int i = 0; i < size; i++)
             {
