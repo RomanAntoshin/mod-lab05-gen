@@ -21,7 +21,7 @@ namespace generator
         private void Load()
         {
             string buf;
-            StreamReader sr = new StreamReader("G:\\ННГУ, ИИТММ, ПИ 3 курс 2 семестр, 2022-2023 гг\\МИПС\\веса биграм.txt");
+            StreamReader sr = new StreamReader("веса биграм.txt");
             buf = sr.ReadToEnd();
             weights=buf.Split(' ').Select(r => Convert.ToInt32(r)).ToArray();
         }
